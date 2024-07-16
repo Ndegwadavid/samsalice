@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoveandKeepsakes</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?display=swap&family=Epilogue:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900" />
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: none;
+            }
+            .mobile-menu.active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#fcf8f9]" style='font-family: Epilogue, "Noto Sans", sans-serif;'>
+    <div class="min-h-screen flex flex-col">
+        <header class="border-b border-[#f3e7eb] px-4 sm:px-10 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4 text-[#1b0e12]">
+                    <div class="size-4">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-lg font-bold tracking-[-0.015em]">LoveandKeepsakes</h2>
+                </div>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#" class="text-sm font-medium">Shop</a>
+                    <a href="#" class="text-sm font-medium">Explore</a>
+                    <a href="#" class="text-sm font-medium">Create</a>
+                    <a href="#" class="text-sm font-medium">Gifts</a>
+                    <a href="#" class="text-sm font-medium">Sale</a>
+                </nav>
+                <div class="flex gap-2">
+                    <button class="p-2 rounded-full bg-[#f3e7eb] text-[#1b0e12]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                            <path d="M178,32c-20.65,0-38.73,8.88-50,23.89C116.73,40.88,98.65,32,78,32A62.07,62.07,0,0,0,16,94c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,220.66,240,164,240,94A62.07,62.07,0,0,0,178,32ZM128,206.8C109.74,196.16,32,147.69,32,94A46.06,46.06,0,0,1,78,48c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,147.61,146.24,196.15,128,206.8Z"></path>
+                        </svg>
+                    </button>
+                    <button class="p-2 rounded-full bg-[#f3e7eb] text-[#1b0e12]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                            <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM176,88a48,48,0,0,1-96,0,8,8,0,0,1,16,0,32,32,0,0,0,64,0,8,8,0,0,1,16,0Z"></path>
+                        </svg>
+                    </button>
+                    <button class="md:hidden p-2 rounded-full bg-[#f3e7eb] text-[#1b0e12]" id="mobile-menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                            <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="mobile-menu md:hidden mt-4" id="mobile-menu">
+                <a href="#" class="block py-2 text-sm font-medium">Shop</a>
+                <a href="#" class="block py-2 text-sm font-medium">Explore</a>
+                <a href="#" class="block py-2 text-sm font-medium">Create</a>
+                <a href="#" class="block py-2 text-sm font-medium">Gifts</a>
+                <a href="#" class="block py-2 text-sm font-medium">Sale</a>
+            </div>
+        </header>
+
+        <main class="flex-1 px-4 sm:px-10 md:px-40 py-5 flex justify-center">
+            <div class="w-full max-w-[512px]">
+                <h1 class="text-[22px] font-bold tracking-[-0.015em] text-center pb-3 pt-5">Welcome to LoveandKeepsakes</h1>
+                <form method="post" action="{% url 'register' %}">
+                    {% csrf_token %}
+                    <div class="space-y-4">
+                        <label class="block">
+                            <span class="text-base font-medium pb-2 block">Username</span>
+                            <input type="text" name="username" placeholder="Enter your username" class="w-full rounded-xl bg-[#f3e7eb] h-14 p-4 text-base placeholder-[#974e67] focus:outline-none focus:ring-2 focus:ring-[#e6195d]" required />
+                        </label>
+                        <labe       l class="block">
+                            <span class="text-base font-medium pb-2 block">Email</span>
+                            <input type="email" name="email" placeholder="Enter your email" class="w-full rounded-xl bg-[#f3e7eb] h-14 p-4 text-base placeholder-[#974e67] focus:outline-none focus:ring-2 focus:ring-[#e6195d]" required />
+                        </label>
+                        <label class="block">
+                            <span class="text-base font-medium pb-2 block">Password</span>
+                            <input type="password" name="password" placeholder="Enter your password" class="w-full rounded-xl bg-[#f3e7eb] h-14 p-4 text-base placeholder-[#974e67] focus:outline-none focus:ring-2 focus:ring-[#e6195d]" required />
+                        </label>
+                        <label class="block">
+                            <span class="text-base font-medium pb-2 block">Repeat Password</span>
+                            <input type="password" name="password2" placeholder="Repeat your password" class="w-full rounded-xl bg-[#f3e7eb] h-14 p-4 text-base placeholder-[#974e67] focus:outline-none focus:ring-2 focus:ring-[#e6195d]" required />
+                        </label>
+                    </div>
+                    <div class="mt-6">
+                        <button type="submit" class="w-full bg-[#e6195d] text-[#fcf8f9] rounded-full py-3 font-bold tracking-[0.015em] hover:bg-[#d1154f] transition-colors">
+                            Sign up
+                        </button>
+                    </div>
+                </form>
+                <p class="text-[#974e67] text-sm text-center mt-4">
+                    Already have an account? <a href="{% url 'login' %}" class="underline hover:text-[#e6195d]">Log in</a>
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

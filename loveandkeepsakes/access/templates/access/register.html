@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoveandKeepsakes - Register</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?display=swap&family=Epilogue:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900" />
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: none;
+            }
+            .mobile-menu.active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#fcf8f9] bg-cover bg-center bg-fixed" style='font-family: Epilogue, "Noto Sans", sans-serif; background-image: url("/static/images/a.jpg");'>
+    <div class="min-h-screen flex flex-col">
+        <header class="border-b border-[#f3e7eb] px-4 sm:px-10 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4 text-[#1b0e12]">
+                    <h2 class="text-lg font-bold tracking-[-0.015em]">LoveandKeepsakes</h2>
+                </div>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#" class="text-sm font-medium">Shop</a>
+                    <a href="#" class="text-sm font-medium">Explore</a>
+                    <a href="#" class="text-sm font-medium">Create</a>
+                    <a href="#" class="text-sm font-medium">Gifts</a>
+                    <a href="#" class="text-sm font-medium">Sale</a>
+                </nav>
+                <div class="flex gap-2">
+                    <button class="md:hidden p-2 rounded-full bg-[#f3e7eb] text-[#1b0e12]" id="mobile-menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                            <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="mobile-menu md:hidden mt-4" id="mobile-menu">
+                <a href="#" class="block py-2 text-sm font-medium">Shop</a>
+                <a href="#" class="block py-2 text-sm font-medium">Explore</a>
+                <a href="#" class="block py-2 text-sm font-medium">Create</a>
+                <a href="#" class="block py-2 text-sm font-medium">Gifts</a>
+                <a href="#" class="block py-2 text-sm font-medium">Sale</a>
+            </div>
+        </header>
+
+        <main class="flex-1 px-4 sm:px-10 md:px-40 py-5 flex justify-center items-center">
+            <div class="w-full max-w-[512px] bg-white bg-opacity-30 backdrop-filter backdrop-blur-md rounded-2xl p-8 shadow-lg">
+                <h1 class="text-[22px] font-bold tracking-[-0.015em] text-center pb-3 pt-5">Create Your Account</h1>
+                <form id="register-form" method="post">
+                    {% csrf_token %}
+                    <div class="space-y-4">
+                        <label class="block">
+                            <span class="text-base font-medium pb-2 block">Email</span>
+                            <input type="email" name="email" class="form-input mt-1 block w-full rounded-md border-[#e5e5e5] shadow-sm focus:border-[#f3e7eb] focus:ring focus:ring-[#f3e7eb] focus:ring-opacity-50" placeholder="Enter your email" required>
+                        </label>
+                        <label class="block">
+                            <span class="text-base font-medium pb-2 block">Password</span>
+                            <input type="password" name="password" class="form-input mt-1 block w-full rounded-md border-[#e5e5e5] shadow-sm focus:border-[#f3e7eb] focus:ring focus:ring-[#f3e7eb] focus:ring-opacity-50" placeholder="Enter your password" required>
+                        </label>
+                        <label class="block">
+                            <span class="text-base font-medium pb-2 block">Repeat Password</span>
+                            <input type="password" name="password2" class="form-input mt-1 block w-full rounded-md border-[#e5e5e5] shadow-sm focus:border-[#f3e7eb] focus:ring focus:ring-[#f3e7eb] focus:ring-opacity-50" placeholder="Repeat your password" required>
+                        </label>
+                        <div>
+                            <button type="submit" class="w-full bg-[#f3e7eb] text-[#1b0e12] font-bold py-2 px-4 rounded-full shadow-lg hover:bg-[#e5d7db] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f3e7eb]">Sign Up</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="mt-6 text-center text-sm">
+                    <span>Already have an account?</span>
+                    <a href="/access/login/" class="font-medium text-[#f3e7eb]">Log in</a>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        });
+        document.getElementById('register-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = this.email.value;
+            const password = this.password.value;
+            const password2 = this.password2.value;
+
+            try {
+                const response = await axios.post('/access/api/register/', {
+                    email: email,
+                    password: password,
+                    password2: password2
+                });
+
+                // Registration successful
+                window.location.href = '/access/login/';  // Redirect to login page
+            } catch (error) {
+                // Registration failed
+                const errorDiv = document.getElementById('error-message');
+                errorDiv.textContent = "Registration failed. Please check your details and try again.";
+            }
+        });
+    </script>
+</body>
+</html>

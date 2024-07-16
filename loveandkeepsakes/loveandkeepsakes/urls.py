@@ -21,11 +21,7 @@ from django.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
-    #path('about/', include('about.urls')),
-    #path('contact/', include('contact.urls')),
-    #path('shop/', include('shop.urls')),
-    #path('blog/', include('blog.urls')),
-    #path('cart/', include('cart.urls')),
-    #path('checkout/', include('checkout.urls')),
-    #path('myaccount/', include('myaccount.urls')),
+    #path('product/', include('product.urls')),
+    path('access/', include('access.urls')),
+    path('landk/', include('LandK.urls')),
 ]

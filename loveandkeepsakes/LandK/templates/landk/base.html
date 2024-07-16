@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Love and Keepsakes{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        /* Custom styles */
+    </style>
+</head>
+<body class="bg-[#fcf8f9] font-sans">
+
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <h1 class="text-lg font-bold">Love and Keepsakes</h1>
+            <nav class="hidden md:flex space-x-4">
+                <a href="#" class="text-gray-700 hover:text-[#e6195d]">Cart</a>
+                <a href="#" class="text-gray-700 hover:text-[#e6195d]">Favourites</a>
+                <a href="#" class="text-gray-700 hover:text-[#e6195d]">Account</a>
+            </nav>
+            <button class="md:hidden p-2 bg-gray-200 rounded-full" id="mobile-menu-button">
+                <!-- Mobile menu icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="hidden md:block w-64 bg-[#f3e7eb] h-screen p-4">
+            <h2 class="font-bold text-lg mb-4">Categories</h2>
+            <ul class="space-y-2">
+                <li><a href="#" class="block p-2 hover:bg-[#e6195d] text-[#1b0e12] rounded">For Her</a></li>
+                <li><a href="#" class="block p-2 hover:bg-[#e6195d] text-[#1b0e12] rounded">For Him</a></li>
+                <li><a href="#" class="block p-2 hover:bg-[#e6195d] text-[#1b0e12] rounded">Graduation</a></li>
+                <li><a href="#" class="block p-2 hover:bg-[#e6195d] text-[#1b0e12] rounded">Anniversary</a></li>
+                <li><a href="#" class="block p-2 hover:bg-[#e6195d] text-[#1b0e12] rounded">Date</a></li>
+                <li><a href="#" class="block p-2 hover:bg-[#e6195d] text-[#1b0e12] rounded">Friendship</a></li>
+                <li><a href="#" class="block p-2 hover:bg-[#e6195d] text-[#1b0e12] rounded">Books</a></li>
+                <li><a href="#" class="block p-2 hover:bg-[#e6195d] text-[#1b0e12] rounded">Create</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main content -->
+        <main class="flex-1 p-4">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('hidden')) {
+                sidebar.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

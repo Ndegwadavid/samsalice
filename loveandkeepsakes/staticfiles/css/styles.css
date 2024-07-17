@@ -1,0 +1,265 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('../images/bg.jpg'); /* Update this path if needed */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(17, 13, 13, 0.6); /* Adjust the last value (0.5) to change the darkness */
+    z-index: -1;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-radius: 40px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background: white;
+    margin: 4px 0;
+    border-radius: 5px;
+}
+
+.main-container {
+    display: flex;
+    flex: 1;
+}
+
+.sidebar {
+    width: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    position: sticky;
+    top: 80px;
+    margin: 20px;
+    border-radius: 25px;
+}
+
+.sidebar-header img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 20px 20px;
+    cursor: pointer;
+}
+
+.sidebar ul li.active, .sidebar ul li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.sidebar ul li.logout {
+    color: #ff4c4c;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.search-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+}
+
+
+.highlight {
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.highlight img {
+    width: 300px;
+    object-fit: cover;
+}
+
+.highlight-text {
+    padding: 20px;
+}
+
+.highlight-text h1 {
+    margin: 0;
+}
+
+.highlight-text button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(209, 23, 153, 0.881);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.highlight-text button:hover {
+    background: rgba(174, 15, 15, 0.1);
+}
+
+.game-list {
+    display: flex;
+    gap: 20px;
+}
+
+.game-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: center;
+    flex: 1;
+}
+
+.game-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.game-info {
+    padding: 10px;
+}
+
+.price {
+    color: #ffd700;
+}
+
+.top-selections {
+    margin-top: 20px;
+}
+
+.selection-list {
+    display: flex;
+    gap: 20px;
+}
+
+.selection-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: center;
+    flex: 1;
+}
+
+.selection-item img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+
+.selection-info {
+    padding: 10px;
+}
+
+.category {
+    color: #ffd700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .main-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 80px; /* Adjust this value to set the desired spacing from the top */
+        left: -250px;
+        width: 250px;
+        height: calc(100vh - 80px); /* Ensure it takes up remaining height */
+        background: rgba(160, 69, 168, 0.286);
+        backdrop-filter: blur(10px);
+        transition: left 0.3s;
+        z-index: 1000;
+        border-radius: 30px;
+    }
+    .sidebar ul li {
+        padding: 20px 20px; /* Adjust padding as needed */
+        cursor: pointer;
+    }
+    
+    
+    .sidebar.open {
+        left: 0;
+    }
+    
+    .content {
+        margin-left: 0;
+    }
+    
+    .highlight {
+        flex-direction: column;
+    }
+    
+    .highlight img {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .game-list, .selection-list {
+        flex-direction: column;
+    }
+}

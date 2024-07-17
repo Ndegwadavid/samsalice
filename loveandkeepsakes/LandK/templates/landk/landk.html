@@ -1,138 +1,155 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Love and Keepsakes{% endblock %}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
-
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
-
-        .love-gradient {
-            background: linear-gradient(135deg, #ff6b6b, #feca57);
-        }
-
-        .hover-scale:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease-in-out;
-        }
-    </style>
+    <title>L&K Shop</title>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 </head>
-<body class="bg-[#fcf8f9] text-[#1b0e12]">
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center p-4">
-            <h1 class="text-2xl font-bold text-[#e6195d]">Love and Keepsakes</h1>
-            <nav class="hidden md:flex space-x-6">
-                <a href="#" class="text-gray-700 hover:text-[#e6195d] transition duration-300 flex items-center">
-                    <i class="fas fa-shopping-cart mr-2"></i>Cart
-                </a>
-                <a href="#" class="text-gray-700 hover:text-[#e6195d] transition duration-300 flex items-center">
-                    <i class="fas fa-heart mr-2"></i>Favourites
-                </a>
-                <a href="#" class="text-gray-700 hover:text-[#e6195d] transition duration-300 flex items-center">
-                    <i class="fas fa-user mr-2"></i>Account
-                </a>
-            </nav>
-            <button class="md:hidden p-2 bg-gray-200 rounded-full" id="mobile-menu-button">
-                <i class="fas fa-bars text-[#e6195d]"></i>
-            </button>
+<body>
+    <header class="header">
+        <div class="logo-section">
+            <div class="logo">L&K</div>
+        </div>
+        <div class="search-section">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </header>
-
-    <div class="flex flex-col md:flex-row">
-        <!-- Sidebar -->
-        <aside id="sidebar" class="hidden md:block w-full md:w-64 bg-[#f3e7eb] md:h-screen p-4 overflow-y-auto transition-all duration-300">
-            <h2 class="font-bold text-xl mb-6 text-[#e6195d]">Categories</h2>
-            <ul class="space-y-3">
-                <li><a href="#" class="block p-3 hover:bg-[#e6195d] hover:text-white text-[#1b0e12] rounded transition duration-300 flex items-center"><i class="fas fa-female mr-3"></i>For Her</a></li>
-                <li><a href="#" class="block p-3 hover:bg-[#e6195d] hover:text-white text-[#1b0e12] rounded transition duration-300 flex items-center"><i class="fas fa-male mr-3"></i>For Him</a></li>
-                <li><a href="#" class="block p-3 hover:bg-[#e6195d] hover:text-white text-[#1b0e12] rounded transition duration-300 flex items-center"><i class="fas fa-graduation-cap mr-3"></i>Graduation</a></li>
-                <li><a href="#" class="block p-3 hover:bg-[#e6195d] hover:text-white text-[#1b0e12] rounded transition duration-300 flex items-center"><i class="fas fa-rings-wedding mr-3"></i>Anniversary</a></li>
-                <li><a href="#" class="block p-3 hover:bg-[#e6195d] hover:text-white text-[#1b0e12] rounded transition duration-300 flex items-center"><i class="fas fa-calendar-heart mr-3"></i>Date</a></li>
-                <li><a href="#" class="block p-3 hover:bg-[#e6195d] hover:text-white text-[#1b0e12] rounded transition duration-300 flex items-center"><i class="fas fa-users mr-3"></i>Friendship</a></li>
-                <li><a href="#" class="block p-3 hover:bg-[#e6195d] hover:text-white text-[#1b0e12] rounded transition duration-300 flex items-center"><i class="fas fa-book mr-3"></i>Books</a></li>
-                <li><a href="#" class="block p-3 hover:bg-[#e6195d] hover:text-white text-[#1b0e12] rounded transition duration-300 flex items-center"><i class="fas fa-paint-brush mr-3"></i>Create</a></li>
+    
+    <div class="main-container">
+        <nav class="sidebar" id="sidebar">
+            
+            <ul>
+                <li>For Him</li>
+                <li>For Her</li>
+                <li>Graduation</li>
+                <li>Friendship</li>
+                <li>Special Gift</li>
+                <li>Dad</li>
+                <li>Mom</li>
+                <li>Decors</li>
+                <li>Games</li>
+                <li>Account</li>
+                <li>Logout</li>
             </ul>
-        </aside>
-
-        <!-- Main content -->
-        <main class="flex-1 p-4 md:p-8">
-            {% block content %}
-            <section class="mb-12">
-                <h2 class="text-3xl font-bold mb-6 text-[#e6195d]">Featured Products</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Example product card -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
-                        <img src="https://via.placeholder.com/300x200" alt="Product" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-xl font-semibold mb-2">Lovely Gift Set</h3>
-                            <p class="text-gray-600 mb-4">Perfect for any occasion</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-[#e6195d] font-bold">$29.99</span>
-                                <button class="bg-[#e6195d] text-white px-4 py-2 rounded hover:bg-[#c01148] transition duration-300">Add to Cart</button>
-                            </div>
+        </nav>
+        <main class="content">
+            <div class="highlight">
+                <img src="{% static 'images/gift.jpg' %}" alt="Highlight Image">
+                <div class="highlight-text">
+                    <h1>Gift Your Loved Ones</h1><br>
+                    <p>Enjoying special moments? <br>Create memories through keepsakes</p>
+                    <button>Order Now</button>
+                </div>
+            </div>
+            <h2>Popular Gifts</h2>
+            <div class="game-list">
+                <div class="game-item">
+                    <img src="{% static 'images/mug.jpeg' %}" alt="Game 1">
+                    <div class="game-info">
+                        <h2>Personalised Mugs</h2>
+                        <span class="price">$20</span> <!-- Button-like price -->
+                    </div>
+                </div>
+                
+                <div class="game-item">
+                    <img src="{% static 'images/flower.jpg' %}" alt="Game 2">
+                    <div class="game-info">
+                        <h2>Flower Bouquet</h2>
+                        <span class="price">$15</span>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <img src="{% static 'images/bear.jpg' %}" alt="Game 2">
+                    <div class="game-info">
+                        <h2>Doll</h2>
+                        <span class="price">$15</span>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <img src="{% static 'images/perfume.jpg' %}" alt="Game 2">
+                    <div class="game-info">
+                        <h2>Perfume</h2>
+                        <span class="price">$15</span>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <img src="{% static 'images/notebook.jpg' %}" alt="Game 2">
+                    <div class="game-info">
+                        <h2>Notebooks</h2>
+                        <span class="price">$15</span>
+                    </div>
+                </div>
+            </div>
+            <!--Section of Most Favourites-->
+            <h2>Most Favourites</h2>
+            <div class="game-list">
+                <div class="game-item">
+                    <img src="{% static 'images/hat.jpg' %}" alt="Game 1">
+                    <div class="game-info">
+                        <h2>Embroidered Hat</h2>
+                        <span class="price">$20</span>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <img src="{% static 'images/bracelets.jpg' %}" alt="Game 2">
+                    <div class="game-info">
+                        <h2>Engraved Bracelets</h2>
+                        <span class="price">$15</span>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <img src="{% static 'images/pillow.jpg' %}" alt="Game 2">
+                    <div class="game-info">
+                        <h2>Throw Pillows</h2>
+                        <span class="price">$15</span>
+                    </div>
+                </div>
+                <div class="game-item">
+                    <img src="{% static 'images/necklace.jpg' %}" alt="Game 2">
+                    <div class="game-info">
+                        <h2>Handwritten Note Necklace</h2>
+                        <span class="price">$15</span>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="top-selections">
+                <h2>Top Selections</h2>
+                <div class="selection-list">
+                    <div class="selection-item">
+                        <img src="{% static 'images/linen.jpg' %}" alt="Selection 1">
+                        <div class="selection-info">
+                            <h3>Embroidered Bags</h3>
+                            <span class="price">$15</span>
                         </div>
                     </div>
-                    <!-- Add more product cards here -->
-                </div>
-            </section>
-
-            <section>
-                <h2 class="text-3xl font-bold mb-6 text-[#e6195d]">Special Offers</h2>
-                <div class="love-gradient text-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold mb-4">Valentine's Day Sale!</h3>
-                    <p class="mb-4">Get 20% off on all romantic gifts. Use code: LOVE20</p>
-                    <a href="#" class="inline-block bg-white text-[#e6195d] font-bold py-2 px-6 rounded-full hover:bg-[#e6195d] hover:text-white transition duration-300">Shop Now</a>
-                </div>
-            </section>
-            {% endblock %}
-        </main>
-    </div>
-
-    <footer class="bg-[#1b0e12] text-white py-8 mt-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">About Us</h3>
-                    <p>Love and Keepsakes is your one-stop shop for thoughtful gifts and precious memories.</p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-[#e6195d] transition duration-300">FAQ</a></li>
-                        <li><a href="#" class="hover:text-[#e6195d] transition duration-300">Shipping</a></li>
-                        <li><a href="#" class="hover:text-[#e6195d] transition duration-300">Returns</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-2xl hover:text-[#e6195d] transition duration-300"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-2xl hover:text-[#e6195d] transition duration-300"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-2xl hover:text-[#e6195d] transition duration-300"><i class="fab fa-twitter"></i></a>
+                    <div class="selection-item">
+                        <img src="{% static 'images/hat.jpg' %}" alt="Selection 2">
+                        <div class="selection-info">
+                            <h3>Linen hats</h3>
+                            <span class="price">$15</span>
+                        </div>
+                    </div>
+                    <div class="selection-item">
+                        <img src="{% static 'images/towels.jpg' %}" alt="Selection 3">
+                        <div class="selection-info">
+                            <h3>Monogrammed Towels</h3>
+                            <span class="category">Casual</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="mt-8 text-center">
-                <p>&copy; 2024 Love and Keepsakes. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('hidden');
-        });
-    </script>
+        </main>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

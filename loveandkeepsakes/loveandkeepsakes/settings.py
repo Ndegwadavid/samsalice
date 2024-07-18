@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-&m#*@0)eku0h=-@w03j0x@gms&6dda8#^xo$tjq693p$p98&ut
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['b471-105-27-122-14.ngrok-free.app',
+                 '127.0.0.1',
+                 'localhost'
+                 ]
 
 
 # Application definition
@@ -68,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'loveandkeepsakes.urls'
@@ -155,3 +159,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# for ngrok deployment
+CSRF_TRUSTED_ORIGINS = ['https://https://b471-105-27-122-14.ngrok-free.app ']
+
+# this setting is for development, on production we shall change it to the exact origins
+CORS_ALLOW_ALL_ORIGINS = True  
+CORS_ALLOW_CREDENTIALS = True
+

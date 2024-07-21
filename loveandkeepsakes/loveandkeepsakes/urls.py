@@ -25,8 +25,8 @@ urlpatterns = [
     #path('product/', include('product.urls')),
     path('access/', include('access.urls')),
     path('landk/', include('LandK.urls')),
-    path('management/', include('management.urls')),
-    path('products/', include('products.urls')),
+    path('keepsakes/', include('keepsakes.urls', namespace='keepsakes')),
+   
 ]
 
 if settings.DEBUG:

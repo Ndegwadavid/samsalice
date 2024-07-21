@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keepsakes - Love and Keepsakes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/keepsakes.css' %}" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Love and Keepsakes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="content-wrapper">
+        <div id="control-panel">
+            <h2 class="mb-4">Customize Your Keepsake</h2>
+            <!-- Existing controls -->
+            <div class="mb-3">
+                <label for="text-input" class="form-label">Enter Text:</label>
+                <textarea id="text-input" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="font-select" class="form-label">Font:</label>
+                <select id="font-select" class="form-select">
+                    <option value="Arial">Arial</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Pacifico">Pacifico</option>
+                    <option value="Roboto">Roboto</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="font-size" class="form-label">Font Size:</label>
+                <input type="range" id="font-size" min="12" max="48" value="24" class="form-range">
+            </div>
+            <div class="mb-3">
+                <label for="color-picker" class="form-label">Text Color:</label>
+                <input type="color" id="color-picker" class="form-control form-control-color" value="#000000">
+            </div>
+            <div class="mb-3">
+                <label for="image-color" class="form-label">Image Color:</label>
+                <input type="color" id="image-color" class="form-control form-control-color" value="#ffffff">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Choose Image:</label>
+                <div id="image-options">
+                    <img src="{% static 'images/quote.jpg' %}" alt="Quote" class="image-option selected">
+                    <img src="{% static 'images/quote3.jpg' %}" alt="Image3" class="image-option">
+                    <img src="{% static 'images/quote7.jpg' %}" alt="Image4" class="image-option">
+                    <img src="{% static 'images/quote5.jpg' %}" alt="Image5" class="image-option">
+                    <img src="{% static 'images/quote6.jpg' %}" alt="Image6" class="image-option">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Add Emoji:</label>
+                <div id="emoji-options">
+                    <span class="emoji-option">❤️</span>
+                    <span class="emoji-option">😊</span>
+                    <span class="emoji-option">🌟</span>
+                    <span class="emoji-option">🌸</span>
+                    <span class="emoji-option">🎵</span>
+                    <span class="emoji-option">☮️</span>
+                    <span class="emoji-option">🌈</span>
+                    <span class="emoji-option">🦋</span>
+                </div>
+            </div>
+            <!-- New border radius control -->
+            <div class="mb-3">
+                <label for="border-radius" class="form-label">Border Radius:</label>
+                <input type="range" id="border-radius" min="0" max="50" value="0" class="form-range">
+            </div>
+            <button id="preview-btn" class="btn btn-primary mb-2 w-100">Preview</button>
+            <button id="buy-btn" class="btn btn-success w-100">Buy</button>
+        </div>
+        <div id="main-content">
+            <div id="image-container">
+                <img src="{% static 'images/quote.jpg' %}" alt="Engravable Image" id="engravable-image" class="img-fluid">
+                <div id="text-overlay"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/keepsakes.js' %}"></script>
+</body>
+</html>

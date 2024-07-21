@@ -43,13 +43,14 @@
         </nav>
         <main class="content">
             <div class="highlight">
-                <img src="{% static 'images/gift.jpg' %}" alt="Highlight Image">
+                <img src="{% static 'images/quote.jpg' %}" alt="Highlight Image">
                 <div class="highlight-text">
-                    <h1>Gift Your Loved Ones</h1><br>
+                    <h1>Engrave your special message</h1><br>
                     <p>Enjoying special moments? <br>Create memories through keepsakes</p>
-                    <button>Order Now</button>
+                    <a href="{% url 'keepsakes:index' %}"><button>Make now</button></a>
                 </div>
             </div>
+    
             <h2>Popular Gifts</h2>
             <div class="game-list">
                 <div class="game-item">

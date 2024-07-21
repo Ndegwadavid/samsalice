@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'LandK',
-    'product',
+    'management',
+    'corsheaders',
+    'products',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
@@ -72,6 +74,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    #'management.middleware.ManagementAuthMiddleware',
 ]
 
 ROOT_URLCONF = 'loveandkeepsakes.urls'
@@ -81,7 +84,7 @@ import os
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -166,4 +169,11 @@ CSRF_TRUSTED_ORIGINS = ['https://https://b471-105-27-122-14.ngrok-free.app ']
 # this setting is for development, on production we shall change it to the exact origins
 CORS_ALLOW_ALL_ORIGINS = True  
 CORS_ALLOW_CREDENTIALS = True
+
+LOGIN_URL = '/management/login/'
+LOGIN_REDIRECT_URL = '/management/'
+
+# media images
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

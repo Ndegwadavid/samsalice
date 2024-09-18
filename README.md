@@ -1,2 +1,2 @@
-# loveandkeepsakes
-Loveandkeepsakes Online E-Commerce. 
+# samsalice
+Samsalice to sell flowers and gifts
